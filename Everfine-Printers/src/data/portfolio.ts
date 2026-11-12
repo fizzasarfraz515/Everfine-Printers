@@ -1,0 +1,253 @@
+export type PortfolioCategory =
+  | 'Business Printing'
+  | 'Wedding Cards'
+  | 'Packaging'
+  | 'Promotional Products'
+  | 'Branding'
+  | 'Brochures'
+  | 'Posters'
+  | 'Large Format'
+
+export interface PortfolioItem {
+  id: string
+  title: string
+  category: PortfolioCategory
+  description: string
+  printingType: string
+  material: string
+  finishing: string
+  /** Accent color used for the placeholder artwork tile when no imageSrc is set (or fails to load). */
+  accent: string
+  /** Path under /public, e.g. '/assets/portfolio/corporate-identity-set.jpg'. Falls back to the accent placeholder if omitted or the file is missing. */
+  imageSrc?: string
+  enabled: boolean
+}
+
+/**
+ * OUR WORK — editable portfolio data.
+ * Several entries now use real EverfinePrinters project photos; the rest are
+ * still placeholder sample projects — replace the titles/details with real
+ * projects, or drop a real photo at the path below for any entry to replace
+ * its placeholder artwork tile (filename must match the id):
+ *   /public/assets/portfolio/<id>.jpg  (or .png / .webp)
+ * Each item renders a placeholder artwork tile until real project photography is supplied.
+ * To add a project, copy an object below and give it a unique `id`.
+ */
+export const portfolioItems: PortfolioItem[] = [
+  {
+    id: 'corporate-identity-set',
+    title: 'Corporate Identity Set',
+    category: 'Business Printing',
+    description: 'A cohesive stationery suite spanning business cards, letterheads and envelopes.',
+    printingType: 'Offset',
+    material: '350gsm Matte Card',
+    finishing: 'Spot UV, Foil Edge',
+    accent: '#da0679',
+    imageSrc: '/assets/portfolio/corporate-identity-set.jpg',
+    enabled: true,
+  },
+  {
+    id: 'royal-ivory-wedding-suite',
+    title: 'Framed Nikkah Certificate',
+    category: 'Wedding Cards',
+    description: 'A gold-framed marriage certificate with ornate Islamic border detailing and calligraphy, personalized for the couple.',
+    printingType: 'Digital',
+    material: 'Textured Card',
+    finishing: 'Gold Frame',
+    accent: '#e9ddc7',
+    imageSrc: '/assets/portfolio/royal-ivory-wedding-suite.jpg',
+    enabled: true,
+  },
+  {
+    id: 'artisan-coffee-packaging',
+    title: 'Hotel Guest Amenity Packaging',
+    category: 'Packaging',
+    description: 'Branded guest amenity packaging with a repeating wave pattern across box, tube and compact formats.',
+    printingType: 'Offset',
+    material: 'Rigid Board',
+    finishing: 'Matte Lamination',
+    accent: '#2a2732',
+    imageSrc: '/assets/portfolio/artisan-coffee-packaging.jpg',
+    enabled: true,
+  },
+  {
+    id: 'studio-launch-merch-kit',
+    title: 'Branded Glass Bottle Gift Set',
+    category: 'Promotional Products',
+    description: 'A branded glass water bottle and neoprene sleeve produced as a corporate gift set.',
+    printingType: 'Screen + Digital',
+    material: 'Glass, Neoprene',
+    finishing: 'Full-Color Wrap, Debossing',
+    accent: '#0a4b96',
+    imageSrc: '/assets/portfolio/studio-launch-merch-kit.jpg',
+    enabled: true,
+  },
+  {
+    id: 'northline-brand-refresh',
+    title: 'Engraved Recognition Plate',
+    category: 'Branding',
+    description: 'A custom engraved recognition plate produced for a corporate partnership event.',
+    printingType: 'Engraving',
+    material: 'Metal',
+    finishing: 'Polished Finish',
+    accent: '#e75da8',
+    imageSrc: '/assets/portfolio/northline-brand-refresh.jpg',
+    enabled: true,
+  },
+  {
+    id: 'quarterly-catalogue',
+    title: 'Anniversary Promotion Catalogue',
+    category: 'Brochures',
+    description: 'A full-color promotional catalogue cover produced for a retail anniversary campaign and prize giveaway.',
+    printingType: 'Digital',
+    material: '150gsm Silk',
+    finishing: 'Gloss Coating',
+    accent: '#faf6ee',
+    imageSrc: '/assets/portfolio/quarterly-catalogue.jpg',
+    enabled: true,
+  },
+  {
+    id: 'summer-festival-poster-series',
+    title: 'Seasonal Festival Standee',
+    category: 'Posters',
+    description: 'A free-standing promotional display produced for a seasonal event campaign.',
+    printingType: 'Digital',
+    material: 'Foam Board',
+    finishing: 'UV Coating',
+    accent: '#da0679',
+    imageSrc: '/assets/portfolio/expo-signage-suite.jpg',
+    enabled: true,
+  },
+  {
+    id: 'storefront-banner-rollout',
+    title: 'Entrance Feather Flag Display',
+    category: 'Large Format',
+    description: 'A row of branded feather flags paired with national flags for a hotel entrance display.',
+    printingType: 'Large Format',
+    material: 'Flex / Vinyl',
+    finishing: 'Hemmed Edges',
+    accent: '#1c1a22',
+    imageSrc: '/assets/portfolio/storefront-banner-rollout.jpg',
+    enabled: true,
+  },
+  {
+    id: 'heritage-cafe-menu-cards',
+    title: 'Café Menu Board',
+    category: 'Business Printing',
+    description: 'A freestanding "Menu of the Day" board produced for a hotel café.',
+    printingType: 'Digital',
+    material: 'Foam Board',
+    finishing: 'Matte Lamination',
+    accent: '#e9ddc7',
+    imageSrc: '/assets/portfolio/heritage-cafe-menu-cards.jpg',
+    enabled: true,
+  },
+  {
+    id: 'garden-engagement-invitations',
+    title: 'Framed Marriage Certificate',
+    category: 'Wedding Cards',
+    description: 'A gold-framed certificate with ornate border detailing, personalized for the couple.',
+    printingType: 'Digital',
+    material: 'Textured Card',
+    finishing: 'Gold Frame',
+    accent: '#0a4b96',
+    imageSrc: '/assets/portfolio/royal-ivory-wedding-suite.jpg',
+    enabled: true,
+  },
+  {
+    id: 'gift-box-collection',
+    title: 'Branded Amenity Box Collection',
+    category: 'Packaging',
+    description: 'Branded guest amenity packaging across multiple box and tube formats.',
+    printingType: 'Offset',
+    material: 'Rigid Board',
+    finishing: 'Matte Lamination',
+    accent: '#e75da8',
+    imageSrc: '/assets/portfolio/artisan-coffee-packaging.jpg',
+    enabled: true,
+  },
+  {
+    id: 'expo-signage-suite',
+    title: 'Retail Festival Standee',
+    category: 'Large Format',
+    description: 'A free-standing A-frame display produced for a seasonal retail promotion.',
+    printingType: 'Large Format',
+    material: 'Foam Board',
+    finishing: 'UV Coating',
+    accent: '#2a2732',
+    imageSrc: '/assets/portfolio/expo-signage-suite.jpg',
+    enabled: true,
+  },
+  {
+    id: 'navien-gift-set',
+    title: 'Tech & Drinkware Corporate Gift Box',
+    category: 'Promotional Products',
+    description: 'A branded corporate gift box including a notebook, pen, tech accessories and drinkware.',
+    printingType: 'Screen + Digital',
+    material: 'Mixed Media',
+    finishing: 'Full-Color Branding',
+    accent: '#faf6ee',
+    imageSrc: '/assets/portfolio/navien-gift-set.jpg',
+    enabled: true,
+  },
+  {
+    id: 'tiss-branded-set',
+    title: 'Branded Stationery & Mug Set',
+    category: 'Promotional Products',
+    description: 'A branded notebook, pen, keychain and mug set produced for a corporate client.',
+    printingType: 'Screen + Digital',
+    material: 'Mixed Media',
+    finishing: 'Full-Color Wrap, Debossing',
+    accent: '#1c1a22',
+    imageSrc: '/assets/portfolio/tiss-branded-set.jpg',
+    enabled: true,
+  },
+  {
+    id: 'pearl-continental-tote',
+    title: 'Hand-Painted Floral Tote Bag',
+    category: 'Promotional Products',
+    description: 'A hand-painted floral design tote bag produced for a hospitality client.',
+    printingType: 'Digital',
+    material: 'Canvas Cotton',
+    finishing: 'Full-Color Print',
+    accent: '#e9ddc7',
+    imageSrc: '/assets/portfolio/pearl-continental-tote.jpg',
+    enabled: true,
+  },
+  {
+    id: 'legend-hotels-gift-set',
+    title: 'Engraved Executive Gift Set',
+    category: 'Promotional Products',
+    description: 'A branded corporate gift box including a card holder, keychain, USB drive and pen.',
+    printingType: 'Engraving',
+    material: 'Metal, Mixed Media',
+    finishing: 'Laser Engraving',
+    accent: '#1c1a22',
+    imageSrc: '/assets/portfolio/legend-hotels-gift-set.jpg',
+    enabled: true,
+  },
+  {
+    id: 'premium-menu-folder',
+    title: 'Premium Leather Menu Folder',
+    category: 'Business Printing',
+    description: 'A suede-bound restaurant menu folder with brass stud detailing and replaceable printed inserts.',
+    printingType: 'Digital',
+    material: 'Suede, Paper Insert',
+    finishing: 'Brass Stud Binding',
+    accent: '#2a2732',
+    imageSrc: '/assets/portfolio/premium-menu-folder.jpg',
+    enabled: true,
+  },
+]
+
+export const portfolioCategories: (PortfolioCategory | 'All')[] = [
+  'All',
+  'Business Printing',
+  'Wedding Cards',
+  'Packaging',
+  'Promotional Products',
+  'Branding',
+  'Brochures',
+  'Posters',
+  'Large Format',
+]

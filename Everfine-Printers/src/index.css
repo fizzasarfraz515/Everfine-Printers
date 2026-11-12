@@ -1,0 +1,187 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Brand palette */
+  --color-ivory: #faf6ee;
+  --color-ivory-soft: #f3ecdf;
+  --color-ivory-deep: #e9ddc7;
+  /* Deep black/navy/purple mixture — now the site's primary background family. */
+  --color-charcoal: #161026;
+  --color-charcoal-deep: #0b0818;
+  --color-charcoal-soft: #241a3f;
+  --color-ink: #050308;
+  /* "royal"/"electric" now carry the Everfine logo's brand colors: magenta + blue. */
+  --color-royal: #da0679;
+  --color-royal-light: #e75da8;
+  --color-royal-deep: #990455;
+  --color-electric: #0a4b96;
+  --color-electric-light: #608abb;
+  --color-silver: #c9cdd6;
+  --color-silver-soft: #e4e6ec;
+
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-sans: 'Manrope', 'Segoe UI', sans-serif;
+
+  --shadow-premium: 0 30px 80px -20px rgba(10, 9, 13, 0.35);
+  --shadow-glow-royal: 0 0 60px -10px rgba(218, 6, 121, 0.45);
+  --shadow-glow-electric: 0 0 60px -10px rgba(10, 75, 150, 0.4);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-drift: drift 14s ease-in-out infinite;
+  --animate-drift-slow: drift 22s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(1deg); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+  @keyframes drift {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(14px, -18px); }
+    50% { transform: translate(-6px, -34px); }
+    75% { transform: translate(-18px, -10px); }
+    100% { transform: translate(0, 0); }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-silver/20;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply text-ivory font-sans antialiased;
+    background-color: var(--color-charcoal-deep);
+    background-image: radial-gradient(
+      ellipse 120% 60% at 50% -10%,
+      color-mix(in srgb, var(--color-royal-deep) 22%, var(--color-charcoal-deep)) 0%,
+      var(--color-charcoal-deep) 45%,
+      var(--color-ink) 100%
+    );
+    background-repeat: no-repeat;
+    background-position: top center;
+    font-feature-settings: 'ss01' 1, 'ss02' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-ivory;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-royal) 40%, transparent);
+    color: var(--color-ivory);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-charcoal-deep);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-charcoal-soft);
+    border-radius: 999px;
+    border: 2px solid var(--color-charcoal-deep);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-royal-light);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-electric);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  html.custom-cursor-active,
+  html.custom-cursor-active a,
+  html.custom-cursor-active button {
+    cursor: none !important;
+  }
+  html.custom-cursor-active input,
+  html.custom-cursor-active textarea,
+  html.custom-cursor-active select {
+    cursor: text !important;
+  }
+}
+
+@layer components {
+  .container-ep {
+    @apply mx-auto w-full max-w-[1400px] px-6 sm:px-8 lg:px-12;
+  }
+
+  .text-gradient-royal {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(115deg, var(--color-royal) 0%, var(--color-electric) 55%, var(--color-royal-light) 100%);
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.28em] text-royal;
+  }
+
+  .glass-panel {
+    background: color-mix(in srgb, var(--color-charcoal-deep) 70%, transparent);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+  }
+
+  .glass-panel-dark {
+    background: color-mix(in srgb, var(--color-charcoal) 70%, transparent);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+  }
+
+  .btn-shine {
+    background-image: linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+    background-size: 200% 100%;
+  }
+
+  .big-type {
+    @apply pointer-events-none select-none font-display leading-none tracking-tight;
+    font-size: clamp(6rem, 22vw, 22rem);
+    font-weight: 600;
+    -webkit-text-stroke: 1.5px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .big-type-fill {
+    @apply pointer-events-none select-none font-display leading-none tracking-tight;
+    font-size: clamp(6rem, 22vw, 22rem);
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  .mask-fade-x {
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  }
+}
